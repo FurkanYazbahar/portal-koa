@@ -1,0 +1,65 @@
+//[uml]
+//--
+:plantuml-server-url: http://www.plantuml.com/plantuml
+
+[plantuml]
+....
+@startuml
+
+Class Sanayi {
+    -İsim
+    -BölgeKodu
+    -Dükkanlar[]
+    -DükkanSayısı
+    +DükkanSırala()
+    }
+Class Dükkan{
+  -DükkanSahip
+  -Dükkanİsim
+  -Yapılanİş
+  -DükkanNumara
+  -Makinalar[]
+  +MakinaListele()
+}
+abstract class Makine{
+  -Boyut
+}
+
+Class CNCMakine{ 
+
+} 
+
+Class ManuelMakine{ 
+
+}    
+
+Class ElmasUç{
+}
+
+Class Matkap{
+}
+
+Class İnsan{
+  +kullan()
+}
+
+
+İnsan "1..*" --> "1..*" Makine : <<kullanır>>
+Class Eğitim{
+}
+(İnsan , Makine ) .. Eğitim
+
+Dükkan --|> Sanayi
+Makine --|> Dükkan
+İnsan --o Dükkan
+CNCMakine ..> Makine
+ManuelMakine ..> Makine
+CNCMakine *-- ElmasUç
+ManuelMakine *-- ElmasUç
+ManuelMakine *-- Matkap
+CNCMakine *-- Matkap
+@enduml
+
+//--
+
+....
